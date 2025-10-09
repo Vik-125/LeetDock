@@ -1,6 +1,6 @@
 class Solution {
 public:
-    bool check(string st)
+    bool check(const string& st)
     {
         int l = 0;
         int r = st.size() - 1;
