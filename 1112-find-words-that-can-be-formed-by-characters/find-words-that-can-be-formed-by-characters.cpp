@@ -4,12 +4,8 @@ public:
     {
         for(auto it : s)
         {
-            if(hash[it] > 0) 
-            {
-                hash[it]--;
-                continue;
-            }
             if(hash[it] <= 0) return false;
+            hash[it]--;
         }
         return true;
     }
