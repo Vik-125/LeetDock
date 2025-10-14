@@ -5,12 +5,7 @@ public:
 
         for(auto it : nums)
         {
-            hash[it]++;
-        }
-
-        for(auto &[key,value] : hash)
-        {
-            if(value > 1) return key;
+            if(++hash[it] > 1) return it;
         }
         return -1;
     }
