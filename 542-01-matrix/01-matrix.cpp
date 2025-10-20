@@ -1,0 +1,50 @@
+class Solution {
+public:
+    vector<vector<int>> updateMatrix(vector<vector<int>>& mat) {
+        int n = mat.size();
+        int m = mat[0].size();
+        vector<vector<int>> ans(n,vector<int> (m,0));
+        queue<pair<pair<int,int>,int>> q;
+        vector<vector<int>> vis(n,vector<int> (m,0));
+        //({row,col},steps)
+
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                if(mat[i][j] == 0)
+                {
+                    q.push({{i,j},0});
+                    ans[i][j] = 0;
+                    vis[i][j] = -1;
+                }
+            }
+        }
+
+        int drow[] = {-1,0,1,0};
+        int dcol[] = {0,1,0,-1};
+        
+        while(!q.empty())
+        {
+            int nrow = q.front().first.first;
+            int ncol = q.front().first.second;
+            int dist = q.front().second;
+            q.pop();
+
+            ans[nrow][ncol] = dist;
+
+            for(int i=0;i<4;i++)
+            {
+                int r = nrow + drow[i];
+                int c = ncol + dcol[i];
+
+                if(r >= 0 && c >= 0 && r < n && c < m && !vis[r][c])
+                {
+                    q.push({{r,c},dist + 1});
+                    vis[r][c] = -1;
+                }
+            }
+        }
+        return ans;
+    }
+};
