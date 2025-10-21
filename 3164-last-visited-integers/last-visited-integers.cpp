@@ -1,8 +1,7 @@
 class Solution {
 public:
     vector<int> lastVisitedIntegers(vector<int>& nums) {
-        vector<int> post;
-        vector<int> ans;
+        vector<int> post,ans;
         int k = 0;
 
         for(auto it : nums)
