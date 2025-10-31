@@ -14,11 +14,15 @@ public:
 
             for(auto it: graph[node])
             {
+                // If the adkjacent node is not coloured yet.
+                // you will give the opposite color of it's adjacent node to it.
                 if(color[it] == -1)
                 {
                     color[it] = 1 - color[node];
                     q.push(it);
                 }
+                // If the node is coloured 
+                // then just check if it is same to it's adjacent node color.
                 else if(color[it] == color[node])
                 {
                     return false;
