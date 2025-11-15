@@ -31,8 +31,8 @@ public:
             {
                 if(!vis[i][j] && land[i][j] == 1)
                 {
-                    int er = 0;
-                    int ec = 0;
+                    int er = i;
+                    int ec = j;
                     dfs(i,j,n,m,land,vis,er,ec,drow,dcol);
                     ans.push_back({i,j,er,ec});
                 }
