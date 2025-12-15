@@ -11,15 +11,15 @@
  */
 class Solution {
 public:
-    vector<int> leaf(TreeNode* root,vector<int> &t)
+    void leaf(TreeNode* root,vector<int> &t)
     {
-        if(!root) return t;
+        if(!root) return;
         if(!root -> left && !root -> right) t.push_back(root -> val);
 
         leaf(root -> left,t);
         leaf(root -> right,t);
 
-        return t;
+        return;
     }
     bool leafSimilar(TreeNode* root1, TreeNode* root2) {
         vector<int> t1;
