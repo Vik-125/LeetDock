@@ -1,22 +1,13 @@
 class Solution {
 public:
-    void check(int n,vector<int> &bit)
-    {
+    bool hasAlternatingBits(int n) {
+        int k = -1;
         while(n > 0)
         {
-            bit.push_back(n%2);
+            int m = n%2;
             n /= 2;
-        }
-        return;
-    }
-    bool hasAlternatingBits(int n) {
-        vector<int> bit;
-        
-        check(n,bit);
-
-        for(int i=0;i<bit.size()-1;i++)
-        {
-            if(bit[i] == bit[i+1]) return false;
+            if(k == m) return false;
+            k = m;
         }
         return true;
     }
