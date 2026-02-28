@@ -3,7 +3,7 @@ public:
     int longestPalindrome(string s) {
         int n = s.size();
 
-        map<char,int> hash;
+        unordered_map<char,int> hash;
         for(auto it : s)
         {
             hash[it]++;
