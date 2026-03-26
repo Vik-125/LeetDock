@@ -15,10 +15,6 @@ public:
                 }
             }
         }
-        cnt = 0;
-        for(auto it : nums){
-            if(it == maj) cnt++;
-        }
         return maj;
     }
 };
