@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<int> majorityElement(vector<int>& nums) {
         int n = nums.size();
-        map<int,int> hash;
+        unordered_map<int,int> hash;
         vector<int> ans;
 
         for(auto it : nums){
