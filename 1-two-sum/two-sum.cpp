@@ -4,11 +4,13 @@ public:
         map<int,int> hmap;
         int n = nums.size();
 
+        for(auto it : nums) hmap[it]++;
+
         for(int i=0;i<n;i++){
-            hmap.insert({nums[i],i});
-            int t = target - nums[i];
-            if(hmap.find(t) != hmap.end() && hmap[t] != i){
-                return {hmap[t],i};
+            int rem = target - nums[i];
+            if(find(nums.begin(),nums.end(),rem) != nums.end() && (find(nums.begin(),nums.end(),rem) - nums.begin()) != i){
+                int ind = find(nums.begin(),nums.end(),rem) - nums.begin();
+                return {i,ind};
             }
         }
         return {};
