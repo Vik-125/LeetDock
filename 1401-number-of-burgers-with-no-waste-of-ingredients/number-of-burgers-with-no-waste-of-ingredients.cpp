@@ -3,7 +3,6 @@ public:
     vector<int> numOfBurgers(int tomatoSlices, int cheeseSlices) {
         if(tomatoSlices == 0 && cheeseSlices == 0) return {0,0};
         if(tomatoSlices % 2 != 0) return {};
-        int x;
         int y;
 
         for(int i=0;i<cheeseSlices;i++){
