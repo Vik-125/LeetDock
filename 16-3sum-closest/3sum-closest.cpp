@@ -20,8 +20,14 @@ public:
                     cout << ans << " ";
                 }
 
-                if(sum > target) k--;
-                else if(sum < target) j++;
+                if(sum > target){
+                    k--;
+                    //while(j < k && nums[k] == nums[k-1]) k--;
+                }
+                else if(sum < target){
+                    j++;
+                    //while(j < k && nums[j] == nums[j+1]) j++;
+                }
                 else return sum;
             }
         }
