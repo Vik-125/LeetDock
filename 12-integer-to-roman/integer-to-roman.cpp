@@ -38,17 +38,12 @@ public:
     string intToRoman(int num) {
         string t = "";
         int k = 1;
-        vector<string> temp;
 
         while(num > 0){
             int dig = num % 10;
-            temp.push_back(convert(dig*k));
+            t = convert(dig * k) + t;
             k *= 10;
             num /= 10;
-        }
-
-        for(int i=temp.size()-1;i>=0;i--){
-            t += temp[i];
         }
         return t;
     }
