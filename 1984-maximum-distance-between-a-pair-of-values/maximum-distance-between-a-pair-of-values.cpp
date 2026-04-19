@@ -8,12 +8,10 @@ public:
         int j=0;
         int maxDis = 0;
         while(i < n && j < m){
-            if(i <= j && nums1[i] <= nums2[j]){
-                cout << i << j << " ";
+            if(nums1[i] <= nums2[j]){
                 maxDis = max(maxDis,j-i);
                 j++;
             }
-            else if(i > j) j++;
             else i++;
         }
         return maxDis;
