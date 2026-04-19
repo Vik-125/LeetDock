@@ -12,7 +12,10 @@ public:
                 maxDis = max(maxDis,j-i);
                 j++;
             }
-            else i++;
+            else {
+                i++;
+                if (i > j) j = i;
+            }
         }
         return maxDis;
     }
