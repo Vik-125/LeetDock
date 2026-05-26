@@ -2,18 +2,15 @@ class Solution {
 public:
     bool uniqueOccurrences(vector<int>& arr) {
         map<int,int> hash;
-        map<int,int> doubleHash;
+        set<int> doubleHash;
 
         for(auto it : arr){
             hash[it]++;
         }
         for(auto it : hash){
             int a = it.second;
-            doubleHash[a]++;
-        }
-        for(auto it : doubleHash){
-            int b = it.second;
-            if(b > 1) return false;
+            if(!doubleHash.insert(a).second) return false;
+            
         }
         return true;
     }
