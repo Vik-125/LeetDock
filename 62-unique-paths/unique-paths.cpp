@@ -3,7 +3,7 @@ public:
     int check(int r,int c,int R,int C,vector<vector<int>> &dp)
     {
         if (r >= R || c >= C) return 0;
-        if (r == R-1 && c == C-1) return 1;
+        if (r == R-1 || c == C-1) return 1;
         if (dp[r][c] != -1) return dp[r][c];
         
         int down = check(r+1,c,R,C,dp);
