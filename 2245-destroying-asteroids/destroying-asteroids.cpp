@@ -4,7 +4,7 @@ public:
         int n = asteroids.size();
         sort(asteroids.begin(),asteroids.end());
 
-        for(auto it : asteroids){
+        for(const int& it : asteroids){
             if(mass < it) return false;
             else mass += it;
         }
