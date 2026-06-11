@@ -1,20 +1,18 @@
 class Solution {
 public:
-    void find(int sum,vector<int>& nums,int target,int i,int &cnt){
-        if(i == nums.size()){
-            if(sum == target) cnt++;
-            return;
+    int find(int i, vector<int>& nums, int target, int sum) {
+        if (i == nums.size()) {
+            if (sum == target)
+                return 1;
+            else
+                return 0;
         }
-        sum += nums[i];
-        find(sum,nums,target,i+1,cnt);
 
-        sum -= (nums[i]+nums[i]);
-        find(sum,nums,target,++i,cnt);
-        return;
+        return (find(i + 1, nums, target, sum + nums[i]) +
+                find(i + 1, nums, target, sum - nums[i]));
     }
     int findTargetSumWays(vector<int>& nums, int target) {
-        int cnt = 0;
-        find(0,nums,target,0,cnt);
-        return cnt;
+        int n = nums.size();
+        return find(0, nums, target, 0);
     }
 };
