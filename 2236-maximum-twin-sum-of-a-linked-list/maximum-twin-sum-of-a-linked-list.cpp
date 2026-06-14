@@ -10,40 +10,17 @@
  */
 class Solution {
 public:
-    ListNode* find(ListNode* head)
-    {
-        ListNode* fast = head;
-        ListNode* slow = head;
-        while(fast && fast -> next)
-        {
-            fast = fast -> next -> next;
-            slow = slow -> next;
-        }
-        return slow;
-    }
-
-    ListNode* rev(ListNode* head)
-    {
-        if(head == NULL || head -> next == NULL)
-        {
-            return head;
-        }
-        ListNode* newHead = rev(head -> next);
-        ListNode* front = head -> next;
-        front -> next = head;
-        head -> next = NULL;
-        return newHead;
-    }
     int pairSum(ListNode* head) {
-        ListNode* mid = find(head);
-        ListNode* nextHead = rev(mid);
+        vector<int> arr;
 
-        int sum = INT_MIN;
-        while(head && nextHead)
-        {
-            sum = max(sum,head -> val + nextHead -> val);
+        while(head){
+            arr.push_back(head -> val);
             head = head -> next;
-            nextHead = nextHead -> next;
+        }
+        int sum = 0;
+        int n = arr.size();
+        for(int i=0;i<n/2;i++){
+            sum = max(sum,arr[i] + arr[n-i-1]);
         }
         return sum;
     }
