@@ -36,6 +36,23 @@ public:
             }
         }
 
+
+//  Here 
+        // vector<int> prev(n1+1,0),curr(n1+1,0);
+
+        // for(int i=0;i<=n1;i++) curr[i] = 0;
+        // for(int i=1;i<=n1;i++){
+        //     for(int j=1;j<=n2;j++){
+        //         if (str1[i - 1] == str2[j - 1]) {
+        //             curr[j] = 1 + prev[j - 1];
+        //         }
+        //         else {
+        //             curr[j] = max(prev[j],curr[j - 1]);
+        //         }
+        //     }
+        //     prev = curr;
+        // }
+
         int len = dp[n1][n2];
         cout << len;
         cout << (n1 + n2 - len);
