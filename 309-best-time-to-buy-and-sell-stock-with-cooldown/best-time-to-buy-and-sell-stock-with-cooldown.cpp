@@ -38,6 +38,25 @@ public:
                 }
             }
         }
-        return dp[0][1];
+
+        vector<int> ahead(2,0), curr(2,0), sAhead(2,0);
+        for(int i=n-1;i>=0;i--){
+            for(int buy=0;buy<=1;buy++){
+                if(buy){
+                    int take = -prices[i] + ahead[0];
+                    int pass = ahead[1];
+                    curr[buy] = max(pass, take);
+                }
+                else 
+                {
+                    int sell = prices[i] + sAhead[1];
+                    int pass = ahead[0];
+                    curr[buy] = max(pass,sell);
+                }
+            }
+            sAhead = ahead;
+            ahead = curr;
+        }
+        return curr[1];
     }
 };
