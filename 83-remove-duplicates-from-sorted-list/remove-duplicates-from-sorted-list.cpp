@@ -11,17 +11,32 @@
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
-        unordered_map<int,int> hash;
+        // unordered_map<int,int> hash;
+        // ListNode* temp = head;
+        // if(temp == NULL) return head;
+        // hash[head -> val]++;
+
+        // while(temp && temp -> next){
+        //     if(hash.find(temp -> next -> val) == hash.end()){
+        //         hash[temp -> next -> val]++;
+        //         temp = temp -> next;
+        //     }
+        //     else temp -> next = temp -> next -> next;
+        // }
+        // return head;
+
+        if(head == NULL) return head;
+        ListNode* prev = head;
         ListNode* temp = head;
-        if(temp == NULL) return head;
-        hash[head -> val]++;
 
         while(temp && temp -> next){
-            if(hash.find(temp -> next -> val) == hash.end()){
-                hash[temp -> next -> val]++;
-                temp = temp -> next;
+            if(prev -> val == temp -> next -> val){
+                temp -> next = temp -> next -> next;
             }
-            else temp -> next = temp -> next -> next;
+            else{ 
+                temp = temp -> next;
+                prev = prev -> next;
+            }
         }
         return head;
     }
