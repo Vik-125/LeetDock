@@ -11,20 +11,18 @@
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
-        if(!head || !head -> next)  return head;
-        ListNode* dummy = new ListNode(-1,head);
-        ListNode* prev = dummy -> next; 
+        unordered_map<int,int> hash;
+        ListNode* temp = head;
+        if(temp == NULL) return head;
+        hash[head -> val]++;
 
-        while(prev && prev -> next)
-        {
-            ListNode* temp = prev -> next;
-
-            if(prev -> val == temp -> val)
-            {
-                prev -> next = prev -> next -> next;
+        while(temp && temp -> next){
+            if(hash.find(temp -> next -> val) == hash.end()){
+                hash[temp -> next -> val]++;
+                temp = temp -> next;
             }
-            else prev = prev -> next;
+            else temp -> next = temp -> next -> next;
         }
-        return dummy -> next;
+        return head;
     }
 };
