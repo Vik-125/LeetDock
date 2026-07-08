@@ -11,22 +11,17 @@
 class Solution {
 public:
     int numComponents(ListNode* head, vector<int>& nums) {
-        map<int,int> hash;
-        for(auto it : nums) hash[it]++;
+        unordered_set<int> hash(nums.begin(), nums.end());
+        int result = 0;
 
-        int result = nums.size();
-        bool flag = false;
-        while(head && head -> next){
-            if(hash.find(head -> val) != hash.end()) flag = true;
-            if(flag == true && hash.find(head -> next -> val) != hash.end()){
-                result--;
-                head = head -> next;
+        while (head) {
+            if (hash.count(head->val) && 
+               (!head->next || !hash.count(head->next->val))) {
+                result++;
             }
-            else{
-                head = head -> next;
-                flag = false;
-            }
+            head = head->next;
         }
+
         return result;
     }
 };
