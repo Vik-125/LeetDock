@@ -11,15 +11,12 @@
 class Solution {
 public:
     int findHCF(int a, int b){
-        int k = min(a,b);
-
-        while(k >= 1){
-            if(a % k == 0 && b % k == 0){
-                return k;
-            }
-            k--;
+        while(b != 0){
+            int temp = b;
+            b = a % b;
+            a = temp;
         }
-        return k;
+        return a;
     }
     ListNode* insertGreatestCommonDivisors(ListNode* head) {
         if(!head || !head -> next) return head;
