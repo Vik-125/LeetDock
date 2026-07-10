@@ -10,26 +10,32 @@
  */
 class Solution {
 public:
-    int check(int a, int b)
-    {
-        while (b != 0) {
-            int temp = b;
-            b = a % b;
-            a = temp;
+    int findHCF(int a, int b){
+        int k = min(a,b);
+
+        while(k >= 1){
+            if(a % k == 0 && b % k == 0){
+                return k;
+            }
+            k--;
         }
-        return a;
+        return k;
     }
     ListNode* insertGreatestCommonDivisors(ListNode* head) {
         if(!head || !head -> next) return head;
-        ListNode* temp = head;
 
-        while(temp && temp -> next)
-        {
-            ListNode* prev = temp;
-            temp = temp -> next;
-            int hcf = check(temp -> val,prev -> val);
-            ListNode* mid = new ListNode(hcf,temp);
-            prev -> next = mid;
+        ListNode* temp = head;
+        while(temp && temp -> next){
+            ListNode* next = temp -> next;
+            int a = temp -> val;
+            int b = temp -> next -> val;
+
+            int hcf = findHCF(a, b);
+
+            ListNode* mid = new ListNode(hcf);
+            temp -> next = mid;
+            mid -> next = next;
+            temp = next;
         }
         return head;
     }
