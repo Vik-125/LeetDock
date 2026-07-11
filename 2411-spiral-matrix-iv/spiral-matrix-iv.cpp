@@ -13,47 +13,40 @@ public:
     vector<vector<int>> spiralMatrix(int m, int n, ListNode* head) {
         vector<vector<int>> matrix(m,vector<int>(n,-1));
 
-        int top = 0;
-        int left = 0;
-        int right = n-1;
-        int bottom = m-1;
+        int l = 0;
+        int t = 0;
+        int b = m-1;
+        int r = n-1;
 
-        while(top <= bottom && left <= right){
-            for(int i=left;i<=right;i++){
-               if(head){
-                    matrix[top][i] = head -> val;
-                    head = head -> next;
-               }
-               else break;
-            }
-            top++;
-
-            for(int j=top;j<=bottom;j++){
+        while(l <= r && t <= b){
+            for(int i=l;i<=r;i++){
                 if(head){
-                    matrix[j][right] = head -> val;
+                    matrix[t][i] = head -> val;
                     head = head -> next;
                 }
-                else break;
             }
-            right--;
-
-            for(int k=right;k>=left;k--){
+            t++;
+            for(int j=t;j<=b;j++){
                 if(head){
-                    matrix[bottom][k] = head -> val;
+                    matrix[j][r] = head -> val;
                     head = head -> next;
                 }
-                else break;
             }
-            bottom--;
-
-            for(int l=bottom;l>=top;l--){
+            r--;
+            for(int i=r;i>=l;i--){
                 if(head){
-                    matrix[l][left] = head -> val;
+                    matrix[b][i] = head -> val;
                     head = head -> next;
                 }
-                else break;
             }
-            left++;
+            b--;
+            for(int i=b;i>=t;i--){
+                if(head){
+                    matrix[i][l] = head -> val;
+                    head = head -> next;
+                }
+            }
+            l++;
         }
         return matrix;
     }
