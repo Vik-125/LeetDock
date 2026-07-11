@@ -11,11 +11,7 @@
 class Solution {
 public:
     ListNode* modifiedList(vector<int>& nums, ListNode* head) {
-        unordered_map<int,int> hash;
-        for(int it : nums)
-        {
-            hash[it]++;
-        }
+        unordered_set<int> hash(nums.begin(),nums.end());
 
         ListNode* prev = new ListNode(-1);
         ListNode* newhead = prev;
@@ -23,7 +19,7 @@ public:
 
         while(temp)
         {
-            if(!hash.count(temp -> val))
+            if(hash.find(temp -> val) == hash.end())
             {
                 prev -> next = temp;
                 prev = prev -> next;
