@@ -24,6 +24,8 @@ public:
                     matrix[t][i] = head -> val;
                     head = head -> next;
                 }
+                else break;
+            
             }
             t++;
             for(int j=t;j<=b;j++){
@@ -31,6 +33,7 @@ public:
                     matrix[j][r] = head -> val;
                     head = head -> next;
                 }
+                else break;
             }
             r--;
             for(int i=r;i>=l;i--){
@@ -38,6 +41,7 @@ public:
                     matrix[b][i] = head -> val;
                     head = head -> next;
                 }
+                else break;
             }
             b--;
             for(int i=b;i>=t;i--){
@@ -45,6 +49,7 @@ public:
                     matrix[i][l] = head -> val;
                     head = head -> next;
                 }
+                else break;
             }
             l++;
         }
