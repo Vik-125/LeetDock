@@ -10,34 +10,24 @@
  */
 class Solution {
 public:
-    ListNode* reverseN(ListNode* &head){
-        if(head == NULL) return head;
-
-        ListNode* prev = NULL;
-        ListNode* curr = head;
-        while(curr){
-            ListNode* temp = curr -> next;
-            curr -> next = prev;
-            prev = curr;
-            curr = temp;
-        }
-        return prev;
-    }
     ListNode* removeNodes(ListNode* head) {
-        ListNode* newH = reverseN(head);
-        ListNode* temp = newH;
-
-        int maxi = temp -> val;
-        while(temp -> next){
-            if(temp -> next -> val >= maxi){
-                maxi = temp -> next -> val;
-                temp = temp -> next;
+        stack<int> st;
+        while(head){
+            while(!st.empty() && st.top() < head -> val){
+                st.pop();
             }
-            else{
-                temp -> next = temp -> next -> next;
-            }
+            st.push(head -> val);
+            head = head ->next;
         }
 
-        return reverseN(newH);
+        ListNode* dummy = nullptr;
+        while(!st.empty()){
+            ListNode* newNode = new ListNode(st.top());
+            st.pop();
+
+            newNode -> next = dummy;
+            dummy = newNode;
+        }
+        return dummy;
     }
 };
