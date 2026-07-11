@@ -10,38 +10,28 @@
  */
 class Solution {
 public:
-    void trav(ListNode* head,vector<int> &arr)
-    {
-        while(head != NULL)
-        {
-            arr.push_back(head -> val);
-            head = head -> next;
-        }
-        return;
-    }
-    ListNode* form(vector<int> arr)
-    {
-        ListNode* node = new ListNode(arr[0]);
-        ListNode* head = node;
-        int n = arr.size();
-
-        for(int i=1;i<n;i++)
-        {
-            ListNode* temp = new ListNode(arr[i]);
-            node -> next = temp;
-            node = node -> next;
-        }
-        return head;
-    }
     ListNode* swapNodes(ListNode* head, int k) {
-        vector<int> arr;
-        trav(head,arr);
+        ListNode* first = head;
+        int cnt = 0;
+        while(first){
+            cnt++;
+            first = first -> next;
+        }
 
-        int n = arr.size();
-        for(auto it : arr) cout << it << " ";
-        swap(arr[k-1],arr[n-k]);
-        for(auto it : arr) cout << it << " ";
-        head = form(arr);
+        int r = cnt - k + 1;
+
+        first = head;
+        for(int i=1;i<k;i++){
+            first = first -> next;
+        }
+
+        ListNode* second = head;
+        for(int i=1;i<r;i++){
+            second = second -> next;
+        }
+        int temp = first -> val;
+        first -> val = second -> val;
+        second -> val = temp;
         return head;
     }
 };
