@@ -18,7 +18,7 @@ public:
         int b = m-1;
         int r = n-1;
 
-        while(l <= r && t <= b){
+        while(l <= r && t <= b && head){
             for(int i=l;i<=r;i++){
                 if(head){
                     matrix[t][i] = head -> val;
