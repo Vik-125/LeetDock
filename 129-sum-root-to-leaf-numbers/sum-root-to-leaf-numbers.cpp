@@ -11,32 +11,31 @@
  */
 class Solution {
 public:
-    void add(TreeNode* root,int &sum,vector<int> &t)
+    void add(TreeNode* root, int &sum, int &num)
     {
         if(!root) return;
 
-        t.push_back(root -> val);
-        
         if(!root -> left && !root -> right) 
         {
-            int num = 0;
-            for(int i=0;i<t.size();i++)
-            {
-                num = num*10 + t[i];
-            }
+            num = num*10 + root -> val;
+            cout << num << " ";
             sum += num;
-            t.pop_back();
+
+            num /= 10;
             return;
         }
-        add(root -> left,sum,t);
-        add(root -> right,sum,t);
-        t.pop_back();
+        num = num*10 + root -> val;
+
+        add(root -> left, sum, num);
+        add(root -> right, sum, num);
+        num /= 10;
     }
     int sumNumbers(TreeNode* root) {
         int sum = 0;
         vector<int> t;
+        int num = 0;
 
-        add(root,sum,t);
+        add(root, sum, num);
 
         return sum;
     }
