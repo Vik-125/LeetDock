@@ -21,8 +21,8 @@ public:
         }
         targetSum -= root -> val;
         temp.push_back(root -> val);
-        find(root -> left, targetSum, temp, result);
-        find(root -> right, targetSum, temp, result);
+        if(root -> left)find(root -> left, targetSum, temp, result);
+        if(root -> right)find(root -> right, targetSum, temp, result);
         temp.pop_back();
         return;
     }
