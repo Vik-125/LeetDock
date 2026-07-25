@@ -13,7 +13,7 @@ class Solution {
 public:
     void find(TreeNode* root, int targetSum, vector<int> &temp,     vector<vector<int>> &result){
         if(!root) return;
-        else if(targetSum - root -> val == 0 && !root -> right && !root -> left){
+        else if(!root -> right && !root -> left && targetSum - root -> val == 0){
             temp.push_back(root -> val);
             result.push_back(temp);
             temp.pop_back();
