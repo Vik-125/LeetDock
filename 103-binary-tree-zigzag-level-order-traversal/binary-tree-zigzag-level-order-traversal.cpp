@@ -30,13 +30,10 @@ public:
                 if(top -> left) q.push(top -> left);
                 if(top -> right) q.push(top -> right);
 
-                temp.push_back(top -> val);
+                if (flag) temp.push_back(top->val);
+                else temp.insert(temp.begin(),top->val);
             }
-            if(flag) result.push_back(temp);
-            else{
-                reverse(temp.begin(),temp.end());
-                result.push_back(temp);
-            }
+            result.push_back(temp);
             flag = !flag;
         }
         return result;
