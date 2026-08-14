@@ -4,16 +4,15 @@ public:
         int l = 0;
         int p = 0;
         int n = s.size();
-        unordered_map<char,int> hash;
+        vector<int> arr(26,0);
         int len = 0;
 
         while(p < n){
-            char k = s[p];
-            hash[k]++;
+            arr[s[p] - 'a'] += 1;
 
-            if(hash[k] > 2){
-                while(hash[k] > 2 && l <= p){
-                    hash[s[l]]--;
+            if(arr[s[p] - 'a'] > 2){
+                while(arr[s[p] - 'a'] > 2 && l <= p){
+                    arr[s[l] - 'a']--;
                     l++;
                 }
             }
