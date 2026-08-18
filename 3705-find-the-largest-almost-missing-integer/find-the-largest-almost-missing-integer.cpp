@@ -6,10 +6,10 @@ public:
         int l = 0;
         int r = nums.size();
 
-        while(l < r){
+        while(l+k <= r){
             int p = 0;
             unordered_set<int> seen;
-            while(p < k && k+l <= r){
+            while(p < k){
                 if(seen.find(nums[p+l]) == seen.end()){
                     seen.insert(nums[p+l]);
                     hash[nums[p+l]]++;
@@ -20,13 +20,9 @@ public:
         }
         int maxi = -1;
         for(auto it : hash){
-            int m = it.first;
-            int n = it.second;
 
-            cout << m << n << endl;;
-
-            if(n == 1){
-                maxi = max(maxi,m);
+            if(it.second == 1){
+                maxi = max(maxi,it.first);
             }
         }
         return maxi;
