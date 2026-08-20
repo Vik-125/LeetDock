@@ -12,6 +12,7 @@
 class Solution {
 public:
     vector<int> rightSideView(TreeNode* root) {
+        /*
         if(root == nullptr) return {};
         vector<int> result;
 
@@ -31,11 +32,37 @@ public:
                     plevel++;
                 }
                 if(it.first -> right){
-                    q.push({it.first -> right,it.second+1});
+                    q.push({it.first -> right, it.second+1});
                 }
                 if(it.first -> left){
                     q.push({it.first -> left, it.second+1});
                 }
+            }
+        }
+        return result;
+        */
+
+
+        if(root == nullptr) return {};
+        
+        vector<int> result;
+        queue<TreeNode*> q;
+
+        q.push(root);
+
+        while(!q.empty()){
+            int s = q.size();
+
+            for(int i=0;i<s;i++){
+                auto it = q.front();
+                q.pop();
+
+                if(i == s-1){
+                    result.push_back(it -> val);
+                }
+
+                if(it -> left) q.push(it -> left);
+                if(it -> right) q.push(it -> right);
             }
         }
         return result;
