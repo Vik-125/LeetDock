@@ -26,11 +26,7 @@ public:
         if(root -> val == subRoot -> val){
             if (check(root, subRoot)) return true;
         }
-        bool lefty = isSubtree(root -> left, subRoot);
-        bool righty = isSubtree(root -> right, subRoot);
 
-        return (lefty || righty) && true;
-
-
+        return (isSubtree(root -> left, subRoot) || isSubtree(root -> right, subRoot));
     }
 };
