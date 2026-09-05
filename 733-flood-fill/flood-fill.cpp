@@ -1,29 +1,29 @@
 class Solution {
 public:
-    void dfs(int sr,int sc,vector<vector<int>>& image ,vector<vector<int>>& newMatrix,int iniColor,int color,int deltaRow[],int deltaCol[])
-    {
-        newMatrix[sr][sc] = color;
+    void colorCube(vector<vector<int>> &image, int sr, int sc, int r, int c, int color, int pColor){
+        int dcol[] = {1,0,-1,0};
+        int drow[] = {0,1,0,-1};
 
-        int n = image.size();
-        int m = image[0].size();
-        for(int i=0;i<4;i++)
-        {
-            int nRow = sr + deltaRow[i];
-            int nCol = sc + deltaCol[i];
-            if(nRow < n && nRow >=0 && nCol < m && nCol >= 0 && newMatrix[nRow][nCol] == iniColor && newMatrix[nRow][nCol] != color)
-            {
-                dfs(nRow,nCol,image,newMatrix,iniColor,color,deltaRow,deltaCol);
+        for(int i=0;i<4;i++){
+            int nr = sr + drow[i];
+            int nc = sc + dcol[i];
+
+            if(nr < r && nr >= 0 && nc < c && nc >= 0 && image[nr][nc] == pColor){
+                image[nr][nc] = color;
+                colorCube(image, nr, nc, r, c, color, pColor);
             }
         }
+        return;
     }
     vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
-        int iniColor = image[sr][sc];
-        vector<vector<int>> newMatrix = image;
-        int deltaRow[] = {-1,0,1,0};
-        int deltaCol[] = {0,-1,0,1};
+        int n = image.size();
+        int m = image[0].size();
 
-        dfs(sr,sc,image,newMatrix,iniColor,color,deltaRow,deltaCol);
-
-        return newMatrix;
+        int pColor = image[sr][sc];
+        if (pColor == color) return image;
+        
+        image[sr][sc] = color;
+        colorCube(image, sr, sc, n, m, color, pColor);
+        return image;
     }
 };
