@@ -21,12 +21,12 @@ public:
         while(!q.empty())
         {
             int n = q.size();
-            int mmin = q.front().second;
+            int levelFirstNodeIndex = q.front().second;
             int first,last;
 
             for(int i=0;i<n;i++){
                 auto it = q.front().first;
-                auto curr_id = q.front().second - mmin;
+                auto curr_id = q.front().second - levelFirstNodeIndex;
                 q.pop();
 
                 if(i == 0) first = curr_id;
