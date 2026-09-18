@@ -13,8 +13,10 @@ class Solution {
 public:
     bool hasPathSum(TreeNode* root, int targetSum) {
         if(!root) return false;
-        if(targetSum - root -> val == 0 && !root -> left && !root -> right) return true;
+        if(!root -> left && !root -> right && targetSum - root -> val == 0) return true;
 
-        return (hasPathSum(root -> left, targetSum - root -> val) || hasPathSum(root -> right, targetSum - root -> val));
+        targetSum = targetSum - root -> val;
+        cout << targetSum << " ";
+        return (hasPathSum(root -> left, targetSum) || hasPathSum(root -> right, targetSum));
     }
 };
