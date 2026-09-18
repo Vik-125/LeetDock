@@ -16,7 +16,7 @@ public:
         if(!root -> left && !root -> right && targetSum - root -> val == 0) return true;
 
         targetSum = targetSum - root -> val;
-        cout << targetSum << " ";
+
         return (hasPathSum(root -> left, targetSum) || hasPathSum(root -> right, targetSum));
     }
 };
