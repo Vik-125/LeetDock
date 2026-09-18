@@ -11,18 +11,21 @@
  */
 class Solution {
 public:
-    void find(TreeNode* root, int targetSum, vector<int> &temp,     vector<vector<int>> &result){
+    void find(TreeNode* root, int targetSum, vector<int> &temp, vector<vector<int>> &result){
         if(!root) return;
-        else if(!root -> right && !root -> left && targetSum - root -> val == 0){
+        if(!root -> left && !root -> right && targetSum - root -> val == 0){
             temp.push_back(root -> val);
             result.push_back(temp);
             temp.pop_back();
             return;
         }
+
         targetSum -= root -> val;
         temp.push_back(root -> val);
-        if(root -> left)find(root -> left, targetSum, temp, result);
-        if(root -> right)find(root -> right, targetSum, temp, result);
+
+        find(root -> left, targetSum, temp, result);
+        find(root -> right, targetSum, temp, result);
+        
         temp.pop_back();
         return;
     }
