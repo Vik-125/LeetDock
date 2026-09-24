@@ -4,7 +4,9 @@ public:
         unordered_map<int,int> hash;
         
         for(auto it : nums){
-            hash[it]++;
+            if(it % 2 == 0){
+                hash[it]++;
+            }
         }
 
         int maxFreq = 0;
@@ -13,8 +15,7 @@ public:
             int ele = it.first;
             int freq = it.second;
 
-            if(ele % 2 == 0){
-                if(freq > maxFreq){
+            if(freq > maxFreq){
                     minEle = ele;
                     maxFreq = freq;
                 }
@@ -23,7 +24,6 @@ public:
                         minEle = ele;
                     }
                 }
-            }
         }
         return minEle;
     }
