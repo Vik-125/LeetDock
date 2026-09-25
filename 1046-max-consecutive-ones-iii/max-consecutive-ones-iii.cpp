@@ -27,7 +27,6 @@ public:
             }
             j++;
             cnt = max(cnt, oneCnt + zeroCnt);
-            cout << zeroCnt << endl;
         }
         return cnt;
     }
