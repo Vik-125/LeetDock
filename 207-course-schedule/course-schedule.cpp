@@ -3,9 +3,9 @@ public:
     bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
         vector<vector<int>> adj(numCourses);
         vector<int> indegree(numCourses,0);
-        vector<int> courses;
+        int cnt = 0;
 
-        for(auto it : prerequisites)
+        for(const auto &it : prerequisites)
         {
             int a = it[0],b = it[1];
             adj[b].push_back(a);
@@ -25,14 +25,13 @@ public:
             int node = q.front();
             q.pop();
 
-            courses.push_back(node);
-            for(auto it : adj[node]){
+            cnt++;
+            for(const auto &it : adj[node]){
                 indegree[it]--;
                 if(indegree[it] == 0) q.push(it);
             }
         }
 
-        cout << numCourses << courses.size();
-        return numCourses == courses.size();
+        return numCourses == cnt;
     }
 };
