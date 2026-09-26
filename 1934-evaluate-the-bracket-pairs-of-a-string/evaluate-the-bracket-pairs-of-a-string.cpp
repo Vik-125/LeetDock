@@ -2,7 +2,7 @@ class Solution {
 public:
     string evaluate(string s, vector<vector<string>>& knowledge) {
         unordered_map<string,string> hash;
-        for(auto it : knowledge){
+        for(const auto &it : knowledge){
             string a = it[0];
             string b = it[1];
             hash[a] = b;
