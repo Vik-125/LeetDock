@@ -1,10 +1,12 @@
 class Solution {
 public:
     string reverseParentheses(string s) {
+        int n = s.size();
         string result;
+        result.reserve(n);
 
         stack<char> st;
-        for(auto it : s){
+        for(const auto &it : s){
             st.push(it);
             if(st.top() == ')'){
                 st.pop();
@@ -14,7 +16,7 @@ public:
                     st.pop();
                 }
                 st.pop();
-                for(auto it : temp) st.push(it);
+                for(const auto &it : temp) st.push(it);
             }
         }
         while(!st.empty()){
