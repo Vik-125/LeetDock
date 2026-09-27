@@ -1,9 +1,8 @@
 class Solution {
 public:
     string reverseParentheses(string s) {
-        int n = s.size();
         string result;
-        result.reserve(n);
+        result.reserve(s.size());
 
         stack<char> st;
         for(const auto &it : s){
