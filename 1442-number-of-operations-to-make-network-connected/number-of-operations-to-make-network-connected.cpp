@@ -39,14 +39,11 @@ public:
         }
         if(connections.size()  < n-1) return -1;
 
-        int k = multiConnection;
-        multiConnection++;
+        int k = 0;
+        
         for(int i=0;i<n;i++){
-            if(parent[i] == i && multiConnection > 0) {
-                multiConnection--;
-            }
-            else if(parent[i] == i) return -1;
+            if(parent[i] == i) k++;
         }
-        return k - multiConnection;
+        return k-1;
     }
 };
